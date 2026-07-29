@@ -1,5 +1,5 @@
 # 📘 Título y descripción
-Nombre: Carlos Andrés Castro Jaramillo
+Nombre: Ana Maria Deossa Serna
 Ficha: 3406204
 Competencias: 
 * Elaboración de la propuesta técnica para la solución de software.
