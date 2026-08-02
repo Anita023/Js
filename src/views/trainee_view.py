@@ -40,7 +40,7 @@ def register_trainee_view():
     )
 
 
-    
+
 def edit_trainee_view():
     """
     Permite editar un aprendiz existente.
@@ -70,6 +70,35 @@ def edit_trainee_view():
         "text": f"El aprendiz {updated_data['nombre']} fue actualizado correctamente."
     })
 
+
+def delete_trainee_view():
+    """
+    Elimina un aprendiz existente.
+    """
+
+    print("\n===== ELIMINAR APRENDIZ =====")
+
+    document = trainee_template.validate_document()
+
+    trainee = trainee_model.search_by_document(document)
+
+    if not trainee:
+
+        trainee_template.display_message({
+            "type": "error",
+            "text": "No existe un aprendiz con ese documento."
+        })
+
+        return
+
+    trainee_model.delete_trainee(document)
+
+    trainee_template.display_message({
+        "type": "success",
+        "text": f"El aprendiz {trainee['nombre']} fue eliminado correctamente."
+    })
+
+    
 def status_view():
     """
     Muestra todos los aprendices.
