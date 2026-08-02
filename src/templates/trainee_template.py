@@ -100,6 +100,25 @@ def get_trainee_input():
         "programa": validate_program()
     }
 
+# ---------------- EDICIÓN ---------------- #
+
+def get_updated_trainee_input(trainee):
+    """
+    Solicita los nuevos datos de un aprendiz.
+    El documento no se modifica.
+    """
+
+    print("\n===== EDITAR APRENDIZ =====")
+    print(f"Documento: {trainee['documento']}")
+
+    return {
+        "tipo_doc": validate_document_type(),
+        "documento": trainee["documento"],
+        "nombre": validate_name(),
+        "correo": validate_email(),
+        "ficha": validate_group(),
+        "programa": validate_program()
+    }
 
 # ---------------- MENSAJES ---------------- #
 
