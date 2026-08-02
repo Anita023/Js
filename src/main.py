@@ -1,21 +1,52 @@
 from views import trainee_view
-from templates import trainee_template
+
+
+def show_menu():
+    print("\n========== MENÚ PRINCIPAL ==========")
+    print("1. Registrar aprendiz")
+    print("2. Editar aprendiz")
+    print("3. Eliminar aprendiz")
+    print("4. Buscar aprendiz")
+    print("5. Mostrar aprendices")
+    print("6. Exportar a CSV")
+    print("7. Salir")
+
 
 def main():
-    
-    trainee_view.init_app_data()  # Inicializa los datos de la aplicación
-    
+
+    trainee_view.init_app_data()
+
     while True:
-        # Registrar un aprendiz
-        trainee_view.register_trainee_view()
-        
-        # Mostrar el estado actual de la lista de aprendices registrados
-        trainee_view.status_view()
-                
-        # Preguntar si desea registrar otro aprendiz
-        if not trainee_template.display_confirm_next():
-            print("Saliendo del programa. ¡Hasta luego!")
+
+        show_menu()
+
+        option = input("\nSeleccione una opción: ").strip()
+
+        if option == "1":
+            trainee_view.register_trainee_view()
+
+        elif option == "2":
+            trainee_view.edit_trainee_view()
+
+        elif option == "3":
+            trainee_view.delete_trainee_view()
+
+        elif option == "4":
+            trainee_view.search_trainee_view()
+
+        elif option == "5":
+            trainee_view.status_view()
+
+        elif option == "6":
+            trainee_view.export_trainees_view()
+
+        elif option == "7":
+            print("\n¡Hasta luego!")
             break
-        
+
+        else:
+            print("\n❌ Opción no válida. Intente nuevamente.")
+
+
 if __name__ == "__main__":
     main()
