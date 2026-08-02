@@ -40,6 +40,36 @@ def register_trainee_view():
     )
 
 
+    
+def edit_trainee_view():
+    """
+    Permite editar un aprendiz existente.
+    """
+
+    print("\n===== EDITAR APRENDIZ =====")
+
+    document = trainee_template.validate_document()
+
+    trainee = trainee_model.search_by_document(document)
+
+    if not trainee:
+
+        trainee_template.display_message({
+            "type": "error",
+            "text": "No existe un aprendiz con ese documento."
+        })
+
+        return
+
+    updated_data = trainee_template.get_updated_trainee_input(trainee)
+
+    trainee_model.update_trainee(document, updated_data)
+
+    trainee_template.display_message({
+        "type": "success",
+        "text": f"El aprendiz {updated_data['nombre']} fue actualizado correctamente."
+    })
+
 def status_view():
     """
     Muestra todos los aprendices.
