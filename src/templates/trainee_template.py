@@ -3,7 +3,7 @@
 
 def get_trainee_input():
     """Solicita al usuario los datos para registrar un aprendiz."""
-    id = input("Número de documento: ").strip()
+    id = int(input("Número de documento: ").strip())
     type_id = input("Tipo de documento (CC/TI/CE): ").strip().upper()
     name = input("Nombre completo: ").strip().title()
     group_code = input("Número de Ficha: ").strip()
