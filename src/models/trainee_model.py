@@ -1,5 +1,6 @@
 import json
 import os
+import csv
 
 # Ruta absoluta del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -142,3 +143,42 @@ def search_by_group(group):
             results.append(trainee)
 
     return results
+
+
+
+# =============================
+# PUNTO 6 - EXPORTAR A CSV
+# =============================
+
+def export_to_csv():
+    """
+    Exporta la lista de aprendices a un archivo CSV.
+    """
+
+    csv_file = os.path.join(DATA_DIR, "trainees.csv")
+
+    with open(csv_file, "w", newline="", encoding="utf-8") as file:
+
+        writer = csv.writer(file)
+
+        writer.writerow([
+            "Tipo Documento",
+            "Documento",
+            "Nombre",
+            "Correo",
+            "Ficha",
+            "Programa"
+        ])
+
+        for trainee in trainees:
+
+            writer.writerow([
+                trainee["tipo_doc"],
+                trainee["documento"],
+                trainee["nombre"],
+                trainee["correo"],
+                trainee["ficha"],
+                trainee["programa"]
+            ])
+
+    return csv_file
