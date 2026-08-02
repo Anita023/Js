@@ -93,3 +93,22 @@ def update_trainee(document, updated_data):
             return True
 
     return False
+
+
+# =============================
+# PUNTO 4 - ELIMINAR APRENDIZ
+# =============================
+
+def delete_trainee(document):
+    """
+    Elimina un aprendiz por su número de documento.
+    """
+    global trainees
+
+    for trainee in trainees:
+        if trainee["documento"] == document:
+            trainees.remove(trainee)
+            save_data()
+            return True
+
+    return False
