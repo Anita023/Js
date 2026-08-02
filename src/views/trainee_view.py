@@ -99,6 +99,52 @@ def delete_trainee_view():
     })
 
     
+
+def search_trainee_view():
+    """
+    Permite buscar aprendices por nombre o ficha.
+    """
+
+    print("\n===== BUSCAR APRENDIZ =====")
+    print("1. Buscar por nombre")
+    print("2. Buscar por ficha")
+
+    option = input("Seleccione una opción: ").strip()
+
+    if option == "1":
+
+        name = input("Ingrese el nombre: ").strip()
+
+        trainees = trainee_model.search_by_name(name)
+
+    elif option == "2":
+
+        group = trainee_template.validate_group()
+
+        trainees = trainee_model.search_by_group(group)
+
+    else:
+
+        trainee_template.display_message({
+            "type": "error",
+            "text": "Opción no válida."
+        })
+
+        return
+
+    if not trainees:
+
+        trainee_template.display_message({
+            "type": "info",
+            "text": "No se encontraron aprendices."
+        })
+
+        return
+
+    trainee_template.display_trainee_list(trainees)
+
+
+
 def status_view():
     """
     Muestra todos los aprendices.
