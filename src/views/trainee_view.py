@@ -98,7 +98,7 @@ def delete_trainee_view():
         "text": f"El aprendiz {trainee['nombre']} fue eliminado correctamente."
     })
 
-    
+
 
 def search_trainee_view():
     """
@@ -143,7 +143,17 @@ def search_trainee_view():
 
     trainee_template.display_trainee_list(trainees)
 
+def export_trainees_view():
+    """
+    Exporta la lista de aprendices a un archivo CSV.
+    """
 
+    file_path = trainee_model.export_to_csv()
+
+    trainee_template.display_message({
+        "type": "success",
+        "text": f"Los aprendices fueron exportados correctamente.\nArchivo generado en: {file_path}"
+    })
 
 def status_view():
     """
