@@ -112,3 +112,33 @@ def delete_trainee(document):
             return True
 
     return False
+
+
+# =============================
+# PUNTO 5 - BUSCAR APRENDICES
+# =============================
+
+def search_by_name(name):
+    """
+    Busca aprendices por nombre.
+    """
+    results = []
+
+    for trainee in trainees:
+        if name.lower() in trainee["nombre"].lower():
+            results.append(trainee)
+
+    return results
+
+
+def search_by_group(group):
+    """
+    Busca aprendices por número de ficha.
+    """
+    results = []
+
+    for trainee in trainees:
+        if trainee["ficha"] == group:
+            results.append(trainee)
+
+    return results
