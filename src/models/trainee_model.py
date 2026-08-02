@@ -53,6 +53,9 @@ def get_all():
 
 
 def search_by_document(document):
+    """
+    Busca un aprendiz por documento.
+    """
     for trainee in trainees:
         if trainee["documento"] == document:
             return trainee
@@ -60,9 +63,33 @@ def search_by_document(document):
 
 
 def register_trainee(new_trainee):
+    """
+    Registra un nuevo aprendiz.
+    """
     if search_by_document(new_trainee["documento"]):
         return False
 
     trainees.append(new_trainee)
     save_data()
     return True
+
+
+# =============================
+# PUNTO 3 - EDITAR APRENDIZ
+# =============================
+
+def update_trainee(document, updated_data):
+    """
+    Actualiza la información de un aprendiz existente.
+    """
+    for index, trainee in enumerate(trainees):
+
+        if trainee["documento"] == document:
+
+            trainees[index] = updated_data
+
+            save_data()
+
+            return True
+
+    return False
