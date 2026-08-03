@@ -1,5 +1,5 @@
-from models import trainee_model
-from templates import trainee_template
+from src.models import trainee_model
+from src.templates import trainee_template
 
 
 def init_app_data():
@@ -23,7 +23,7 @@ def register_trainee_view():
         trainee_template.display_message(
             {
                 "type": "error",
-                "text": "Ya existe un aprendiz con ese número de documento."
+                "text": "Ya existe un aprendiz con ese número de documento.",
             }
         )
 
@@ -35,10 +35,9 @@ def register_trainee_view():
     trainee_template.display_message(
         {
             "type": "success",
-            "text": f"El aprendiz {data['nombre']} fue registrado correctamente."
+            "text": f"El aprendiz {data['nombre']} fue registrado correctamente.",
         }
     )
-
 
 
 def edit_trainee_view():
@@ -54,10 +53,9 @@ def edit_trainee_view():
 
     if not trainee:
 
-        trainee_template.display_message({
-            "type": "error",
-            "text": "No existe un aprendiz con ese documento."
-        })
+        trainee_template.display_message(
+            {"type": "error", "text": "No existe un aprendiz con ese documento."}
+        )
 
         return
 
@@ -65,10 +63,12 @@ def edit_trainee_view():
 
     trainee_model.update_trainee(document, updated_data)
 
-    trainee_template.display_message({
-        "type": "success",
-        "text": f"El aprendiz {updated_data['nombre']} fue actualizado correctamente."
-    })
+    trainee_template.display_message(
+        {
+            "type": "success",
+            "text": f"El aprendiz {updated_data['nombre']} fue actualizado correctamente.",
+        }
+    )
 
 
 def delete_trainee_view():
@@ -84,20 +84,20 @@ def delete_trainee_view():
 
     if not trainee:
 
-        trainee_template.display_message({
-            "type": "error",
-            "text": "No existe un aprendiz con ese documento."
-        })
+        trainee_template.display_message(
+            {"type": "error", "text": "No existe un aprendiz con ese documento."}
+        )
 
         return
 
     trainee_model.delete_trainee(document)
 
-    trainee_template.display_message({
-        "type": "success",
-        "text": f"El aprendiz {trainee['nombre']} fue eliminado correctamente."
-    })
-
+    trainee_template.display_message(
+        {
+            "type": "success",
+            "text": f"El aprendiz {trainee['nombre']} fue eliminado correctamente.",
+        }
+    )
 
 
 def search_trainee_view():
@@ -125,23 +125,22 @@ def search_trainee_view():
 
     else:
 
-        trainee_template.display_message({
-            "type": "error",
-            "text": "Opción no válida."
-        })
+        trainee_template.display_message(
+            {"type": "error", "text": "Opción no válida."}
+        )
 
         return
 
     if not trainees:
 
-        trainee_template.display_message({
-            "type": "info",
-            "text": "No se encontraron aprendices."
-        })
+        trainee_template.display_message(
+            {"type": "info", "text": "No se encontraron aprendices."}
+        )
 
         return
 
     trainee_template.display_trainee_list(trainees)
+
 
 def export_trainees_view():
     """
@@ -150,10 +149,13 @@ def export_trainees_view():
 
     file_path = trainee_model.export_to_csv()
 
-    trainee_template.display_message({
-        "type": "success",
-        "text": f"Los aprendices fueron exportados correctamente.\nArchivo generado en: {file_path}"
-    })
+    trainee_template.display_message(
+        {
+            "type": "success",
+            "text": f"Los aprendices fueron exportados correctamente.\nArchivo generado en: {file_path}",
+        }
+    )
+
 
 def status_view():
     """

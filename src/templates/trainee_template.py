@@ -95,7 +95,7 @@ def get_trainee_input():
         "tipo_doc": validate_document_type(),
         "documento": validate_document(),
         "nombre": validate_name(),
-        "correo": validate_email(),
+        "email": validate_email(),
         "ficha": validate_group(),
         "programa": validate_program()
     }
@@ -115,7 +115,7 @@ def get_updated_trainee_input(trainee):
         "tipo_doc": validate_document_type(),
         "documento": trainee["documento"],
         "nombre": validate_name(),
-        "correo": validate_email(),
+        "email": validate_email(),
         "ficha": validate_group(),
         "programa": validate_program()
     }
@@ -146,7 +146,7 @@ def display_trainee_list(trainees):
 Documento : {trainee['documento']}
 Tipo Doc  : {trainee['tipo_doc']}
 Nombre    : {trainee['nombre']}
-Correo    : {trainee['correo']}
+Email     : {trainee['email']}
 Ficha     : {trainee['ficha']}
 Programa  : {trainee['programa']}
 ----------------------------------------
