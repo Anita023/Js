@@ -1,5 +1,5 @@
-from src.models import trainee_model
-from src.templates import trainee_template
+from models import trainee_model
+from templates import trainee_template
 
 
 def init_app_data():

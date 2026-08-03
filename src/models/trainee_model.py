@@ -165,7 +165,7 @@ def export_to_csv():
             "Tipo Documento",
             "Documento",
             "Nombre",
-            "Correo",
+            "email",
             "Ficha",
             "Programa"
         ])
@@ -176,7 +176,7 @@ def export_to_csv():
                 trainee["tipo_doc"],
                 trainee["documento"],
                 trainee["nombre"],
-                trainee["correo"],
+                trainee["email"],
                 trainee["ficha"],
                 trainee["programa"]
             ])

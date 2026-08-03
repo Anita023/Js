@@ -1,4 +1,4 @@
-from src.views import trainee_view
+from views import trainee_view
 
 
 def show_menu():
