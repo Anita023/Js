@@ -162,12 +162,12 @@ def export_to_csv():
         writer = csv.writer(file)
 
         writer.writerow([
-            "Tipo Documento",
-            "Documento",
-            "Nombre",
+            "tipo_doc",
+            "documento",
+            "nombre",
             "email",
-            "Ficha",
-            "Programa"
+            "ficha",
+            "programa"
         ])
 
         for trainee in trainees:
